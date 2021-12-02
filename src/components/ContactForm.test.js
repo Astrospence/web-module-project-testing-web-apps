@@ -28,7 +28,17 @@ test('renders ONE error message if user enters less then 5 characters into first
 });
 
 test('renders THREE error messages if user enters no values into any fields.', async () => {
-    
+    render(<ContactForm />);
+    await waitFor(() => {
+        const submit = screen.queryByRole("button");
+        const errorOne = screen.queryByText(/Error: firstName must have at least 5 characters./);
+        const errorTwo = screen.queryByText(/Error: lastName is a required field./);
+        const errorThree = screen.queryByText(/Error: email must be a valid email address./);
+        userEvent.click(submit);
+        expect(errorOne).toBeInTheDocument();
+        expect(errorTwo).toBeInTheDocument();
+        expect(errorThree).toBeInTheDocument();
+    })
 });
 
 test('renders ONE error message if user enters a valid first name and last name but no email.', async () => {
