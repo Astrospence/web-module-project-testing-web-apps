@@ -113,10 +113,10 @@ test('renders all fields text when all fields are submitted.', async () => {
         const lastNameDisplay = screen.queryByTestId("lastnameDisplay");
         const emailDisplay = screen.queryByTestId("emailDisplay");
         const messageDisplay = screen.queryByTestId("messageDisplay");
-        userEvent.type(firstNameField, "Hello");
-        userEvent.type(lastNameField, "World");
+        userEvent.type(firstNameField, "Articuno");
+        userEvent.type(lastNameField, "Pokemon");
         userEvent.type(emailField, "test@hotmail.com");
-        userEvent.type(messageField, "Thanks for all this practice!");
+        userEvent.type(messageField, "Coding rules!");
         userEvent.click(submit);
         expect(firstNameDisplay).toBeTruthy();
         expect(lastNameDisplay).toBeTruthy();
